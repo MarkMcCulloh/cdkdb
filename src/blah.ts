@@ -1,11 +1,11 @@
 import { Construct } from "constructs";
-import { Column } from "../src/column";
-import { DBType } from "../src/db_type";
-import { PrimaryKey } from "../src/primary_key";
-import { RootConstruct } from "../src/root_construct";
-import { Schema } from "../src/schema";
-import { dbSynth } from "../src/synth";
-import { Table } from "../src/table";
+import { Column } from "./column";
+import { DBType } from "./db_type";
+import { PrimaryKey } from "./primary_key";
+import { RootConstruct } from "./root_construct";
+import { Schema } from "./schema";
+import { dbSynth } from "./synth";
+import { Table } from "./table";
 
 export class IdColumn extends Construct {
   readonly primaryKey: PrimaryKey;
@@ -58,29 +58,27 @@ const schema = new Schema(root, "Schema", {
 });
 const person = new Person(root, "Test", schema);
 new IdColumn(person.table, "ID", person.table);
+/*
+schema "example" {
+}
+table "person" {
+  schema = schema.example
+  column "person_id" {
+    type = int(255)
+    null = false
+  }
+  column "name" {
+    type = varchar(255)
+    null = false
+  }
+  column "age" {
+    type = int(255)
+    null = true
+  }
+  primary_key {
+    columns = [table.person.column.person_id]
+  }
+}
+*/
 
-test("test", () => {
-  const text = dbSynth(root);
-  expect(text).toMatchInlineSnapshot(`
-    "schema \\"example\\" {
-    }
-    table \\"person\\" {
-      schema = schema.example
-      column \\"id\\" {
-        type = integer
-        null = false
-      }
-      column \\"name\\" {
-        type = varchar(255)
-      }
-      column \\"age\\" {
-        type = integer
-        null = true
-      }
-      primary_key {
-        columns = [table.person.column.id]
-      }
-    }
-    "
-  `);
-});
+console.log(dbSynth(root));
