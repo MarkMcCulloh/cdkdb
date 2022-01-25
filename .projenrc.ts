@@ -14,6 +14,7 @@ const project = new cdk.JsiiProject({
   },
   peerDeps: ["constructs"],
   depsUpgrade: false,
+  release: false,
 });
 
 project.synth();
