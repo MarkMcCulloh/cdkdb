@@ -1,11 +1,11 @@
 import { Construct } from "constructs";
-import { Column } from "../src/column";
-import { DBType } from "../src/db_type";
-import { PrimaryKey } from "../src/primary_key";
+import { Column } from "../src/base/column";
+import { DBType } from "../src/base/db_type";
+import { PrimaryKey } from "../src/base/primary_key";
+import { Schema } from "../src/base/schema";
+import { Table } from "../src/base/table";
 import { RootConstruct } from "../src/root_construct";
-import { Schema } from "../src/schema";
 import { dbSynth } from "../src/synth";
-import { Table } from "../src/table";
 
 export class IdColumn extends Construct {
   readonly primaryKey: PrimaryKey;

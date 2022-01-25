@@ -1,8 +1,8 @@
 import { IConstruct, Node } from "constructs";
-import { Column } from "./column";
-import { IDDLConstruct } from "./ddl_construct";
-import { PrimaryKey } from "./primary_key";
-import { Schema } from "./schema";
+import { Column } from "./base/column";
+import { IDDLConstruct } from "./base/ddl_construct";
+import { PrimaryKey } from "./base/primary_key";
+import { Schema } from "./base/schema";
 
 export function dbSynth(rootConstruct: IConstruct) {
   let returnString = "";
